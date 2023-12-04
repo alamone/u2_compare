@@ -122,9 +122,8 @@ def fixasset(blob1, blob2, index, freeblock, writeblocks):
 
     # skip bad blocks
     while(True):
-        if (check_bbtable(blob2, freeblock) == True): # first block good
-            if (check_bbtable(blob2, freeblock + 1) == True): # second block good, ok to use
-                break
+        if (check_bbtable(blob2, freeblock) == True) and (check_bbtable(blob2, freeblock + 1) == True): # two blocks good
+            break
         else:
             freeblock = freeblock + 1
             continue
@@ -154,9 +153,9 @@ if __name__ == "__main__":
 
     print("Starting")
     p = argparse.ArgumentParser(description='Compare CV1000 U2 dumps.')
-    p.add_argument('good_file', type=str)
-    p.add_argument('test_file', type=str)
-    p.add_argument('fixed_file', type=str)
+    p.add_argument('good_file', type=str, help='Known good U2 dump (e.g. from MAME romset)')
+    p.add_argument('test_file', type=str, help='U2 dump from PCB to test')
+    p.add_argument('fixed_file', type=str, help='Fixed U2 output filename')
     args = p.parse_args()
 
     f1 = open(args.good_file, 'rb')
