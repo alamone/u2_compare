@@ -126,15 +126,16 @@ def fixasset(blob1, blob2, index, freeblock, writeblocks):
             break
         else:
             freeblock = freeblock + 1
+            usedblocks = usedblocks + 1
             continue
     
     writeint32(blob2, freeblock, toc(index))
-    usedblocks = usedblocks + bytecopy(blob1, blob2, entry2_nand_block, freeblock + usedblocks, entry1_nand_block, writeblocks)
+    usedblocks = usedblocks + bytecopy(blob1, blob2, entry2_nand_block, freeblock, entry1_nand_block, writeblocks)
     
     if (cross_boundary == True):
         entry1_nand_block = entry1_nand_block + 1
         entry2_nand_block = entry2_nand_block + 1        
-        usedblocks = usedblocks + bytecopy(blob1, blob2, entry2_nand_block, freeblock + usedblocks, entry1_nand_block, writeblocks)
+        usedblocks = usedblocks + bytecopy(blob1, blob2, entry2_nand_block, freeblock + 1, entry1_nand_block, writeblocks)
         
     return usedblocks
 
