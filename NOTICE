@@ -1,0 +1,10 @@
+u2_compare — a repair utility for CAVE CV1000 U2 ROM dumps
+Original work by alamone — https://github.com/alamone/u2_compare
+Copyright (c) 2026 alamone
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+Redistributions and derivative works must retain this NOTICE file
+(Apache License 2.0, Section 4(d)).
+
+Unaffiliated with and unendorsed by CAVE. No copyrighted ROM is included
+or distributed; the known-good reference dump is supplied by the user.
